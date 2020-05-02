@@ -6,6 +6,7 @@
 
 #include <string>
 #include <iostream>
+#include <map>
 
 using namespace std;
 
@@ -21,6 +22,7 @@ class Level
         void play();
         bool complete = false;
 
+        map<string, Room*> rooms;
 
     protected:
 

@@ -14,6 +14,7 @@ void demo()
     cout << "finished demo setup\n";
 
     L.play();
+
     if(L.complete) cout << "OK\n";
     else cout << "WA\n";
 }

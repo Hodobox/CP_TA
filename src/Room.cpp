@@ -14,12 +14,14 @@ Room::~Room()
     //dtor
 }
 
-void Room::enter()
+bool Room::enter()
 {
     cout << enter_desc << "\n";
 
     if(this->name == "finish") this->level->complete = true;
     else this -> list_neighbors();
+
+    return true;
 }
 
 void Room::list_neighbors()

@@ -13,6 +13,6 @@ Player::~Player()
 
 void Player::enter(Room* room)
 {
-    this -> location = room;
-    room -> enter();
+    if(room -> enter())
+        this -> location = room;
 }

@@ -16,13 +16,11 @@ class Room
 
         string name;
 
-
-
         vector<Room*> neighbors;
         Level* level;
 
         string enter_desc;
-        void enter();
+        bool enter();
         void list_neighbors();
 
     protected:
