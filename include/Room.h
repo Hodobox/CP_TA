@@ -1,13 +1,12 @@
 #ifndef ROOM_H
 #define ROOM_H
 
-#include "Level.h"
-#include "Player.h"
-
 #include <string>
 #include <vector>
 #include <iostream>
 using namespace std;
+
+class Level;
 
 class Room
 {
@@ -22,7 +21,7 @@ class Room
         static const string dir_names[4];
 
         vector<Room*> neighbors;
-        //Level parentlevel*;
+        Level* level;
 
         string enter_desc;
         void enter();

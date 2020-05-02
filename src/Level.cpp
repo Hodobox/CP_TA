@@ -14,7 +14,7 @@ Level::~Level()
 void Level::play()
 {
     cout << "Welcome to level: " << name << "\n";
-    player.enter(player.location);
+    player -> enter(player -> location);
     while(!(this->complete))
     {
         string response;
@@ -27,9 +27,9 @@ void Level::play()
         {
             if(response == Room::dir_names[i])
             {
-                if(player.location -> neighbors[i] != nullptr)
+                if(player -> location -> neighbors[i] != nullptr)
                 {
-                    player.enter(player.location -> neighbors[i]);
+                    player -> enter(player -> location -> neighbors[i]);
                     done = true;
                 }
             }

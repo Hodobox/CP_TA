@@ -16,7 +16,7 @@ class Level
         virtual ~Level();
 
         string name;
-        Player player;
+        Player *player = nullptr;
 
         void play();
         bool complete = false;

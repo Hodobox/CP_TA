@@ -12,34 +12,29 @@
 1588439188 source:/home/hodobox/GIT/CP_TA/src/Player.cpp
 	"Player.h"
 
-1588450688 /home/hodobox/GIT/CP_TA/include/Player.h
+1588452510 /home/hodobox/GIT/CP_TA/include/Player.h
 	"Room.h"
+
+1588453424 source:/home/hodobox/GIT/CP_TA/src/Level.cpp
 	"Level.h"
 
-1588448479 source:/home/hodobox/GIT/CP_TA/src/Level.cpp
-	"Level.h"
-
-1588451255 /home/hodobox/GIT/CP_TA/include/Level.h
+1588453086 /home/hodobox/GIT/CP_TA/include/Level.h
 	"Player.h"
 	"Room.h"
 	<string>
 	<iostream>
 
-1588449553 source:/home/hodobox/GIT/CP_TA/src/Room.cpp
+1588453334 source:/home/hodobox/GIT/CP_TA/src/Room.cpp
 	"Room.h"
-
-1588450459 /home/hodobox/GIT/CP_TA/include/Room.h
 	"Level.h"
-	"Player.h"
+
+1588453177 /home/hodobox/GIT/CP_TA/include/Room.h
 	<string>
 	<vector>
 	<iostream>
 
-1588449277 source:/home/hodobox/GIT/CP_TA/main.cpp
+1588453066 source:/home/hodobox/GIT/CP_TA/main.cpp
 	<iostream>
 	"Level.h"
 	"Room.h"
-	"Player.h"
-	"Item.h"
-	"Lexicon.h"
 
