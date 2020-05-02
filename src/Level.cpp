@@ -25,7 +25,7 @@ void Level::play()
         bool done = false;
         for(int i=0;!done && i<4;++i)
         {
-            if(response == Room::dir_names[i])
+            if(response == dir_names[i])
             {
                 if(player -> location -> neighbors[i] != nullptr)
                 {

@@ -1,7 +1,6 @@
 #include "Room.h"
 #include "Level.h"
 
-const string Room::dir_names[4] = { "North", "East", "South", "West" };
 
 Room::Room(string name)
 {
@@ -29,6 +28,17 @@ void Room::list_neighbors()
     for(int i=0;i<(int)this->neighbors.size();++i)
     {
         if( this -> neighbors[i] == nullptr ) continue;
-        cout << Room::dir_names[i] << " to " << (this -> neighbors[i] -> name) << "\n";
+        cout << dir_names[i] << " to " << (this -> neighbors[i] -> name) << "\n";
     }
+}
+
+bool make_neighbors(Room *first, Room* second, int direction)
+{
+    int opp_direction = (direction+2)%4;
+
+    if(first->neighbors[direction] != nullptr) return false;
+    if(second->neighbors[opp_direction] != nullptr) return false;
+    first->neighbors[direction] = second;
+    second->neighbors[opp_direction] = first;
+    return true;
 }

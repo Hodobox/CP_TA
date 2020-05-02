@@ -10,9 +10,8 @@ void demo()
     Room* start = new Room("start");
     start -> level = &L;
     Room* finish = new Room("finish");
+    make_neighbors(start, finish, east);
     finish -> level = &L;
-    start -> neighbors[Room::east] = finish;
-    finish -> neighbors[Room::west] = start;
     start -> enter_desc = "You wake up in a cell.";
     finish -> enter_desc = "You arrive outside. Freedom at last!";
     L.player = new Player(start);
