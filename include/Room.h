@@ -20,6 +20,7 @@ class Room
         Level* level;
 
         string enter_desc;
+        virtual bool check_enter_requirements() { return true; }
         virtual bool enter();
         void list_neighbors();
 

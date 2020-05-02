@@ -39,5 +39,3 @@ void Level::play()
         player -> location -> list_neighbors();
      }
 }
-
-
