@@ -38,3 +38,11 @@ void Level::play()
         cout << response << " is not somewhere you can go right now.\n";
      }
 }
+
+Room* create_room(Level* L, string room_name, string room_desc)
+{
+    Room* room = new Room(room_name);
+    room -> level = L;
+    room -> enter_desc = room_desc;
+    return room;
+}

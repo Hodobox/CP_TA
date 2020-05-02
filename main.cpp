@@ -7,13 +7,9 @@ void demo()
 {
     cout << "setting up demo\n";
     Level L = Level("demo");
-    Room* start = new Room("start");
-    start -> level = &L;
-    Room* finish = new Room("finish");
+    Room* start = create_room(&L, "start", "You wake up in a cell.");
+    Room* finish = create_room(&L, "finish", "You arrive outside. Freedom at last!");
     make_neighbors(start, finish, east);
-    finish -> level = &L;
-    start -> enter_desc = "You wake up in a cell.";
-    finish -> enter_desc = "You arrive outside. Freedom at last!";
     L.player = new Player(start);
     cout << "finished demo setup\n";
 

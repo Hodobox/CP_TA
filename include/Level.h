@@ -28,4 +28,6 @@ class Level
 
 };
 
+Room* create_room(Level *L, string room_name, string room_desc);
+
 #endif // LEVEL_H
