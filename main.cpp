@@ -7,18 +7,14 @@ void demo()
 {
     cout << "setting up demo\n";
     Level L = Level("demo");
-    Room* start = new Room("start");
-    start -> level = &L;
-    Room* finish = new Room("finish");
-    finish -> level = &L;
-    start -> neighbors[Room::east] = finish;
-    finish -> neighbors[Room::west] = start;
-    start -> enter_desc = "You wake up in a cell.";
-    finish -> enter_desc = "You arrive outside. Freedom at last!";
+    Room* start = create_room(&L, "start", "You wake up in a cell.");
+    Room* finish = create_room(&L, "finish", "You arrive outside. Freedom at last!");
+    make_neighbors(start, finish, east);
     L.player = new Player(start);
     cout << "finished demo setup\n";
 
     L.play();
+
     if(L.complete) cout << "OK\n";
     else cout << "WA\n";
 }

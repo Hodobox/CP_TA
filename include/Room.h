@@ -16,20 +16,21 @@ class Room
 
         string name;
 
-        enum directions { north, east, south, west };
-
-        static const string dir_names[4];
-
         vector<Room*> neighbors;
         Level* level;
 
         string enter_desc;
-        void enter();
+        bool enter();
         void list_neighbors();
 
     protected:
 
     private:
 };
+
+enum directions { north, east, south, west };
+const string dir_names[4] = { "North", "East", "South", "West" };
+
+bool make_neighbors(Room* first, Room* second, int direction);
 
 #endif // ROOM_H

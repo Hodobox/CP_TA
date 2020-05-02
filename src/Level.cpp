@@ -25,7 +25,7 @@ void Level::play()
         bool done = false;
         for(int i=0;!done && i<4;++i)
         {
-            if(response == Room::dir_names[i])
+            if(response == dir_names[i])
             {
                 if(player -> location -> neighbors[i] != nullptr)
                 {
@@ -36,5 +36,17 @@ void Level::play()
         }
         if(done) continue;
         cout << response << " is not somewhere you can go right now.\n";
+        player -> location -> list_neighbors();
      }
+}
+
+Room* create_room(Level* L, string room_name, string room_desc)
+{
+    if(L->rooms.find(room_name) != L->rooms.end()) return nullptr;
+
+    Room* room = new Room(room_name);
+    L->rooms[room_name] = room;
+    room -> level = L;
+    room -> enter_desc = room_desc;
+    return room;
 }

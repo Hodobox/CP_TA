@@ -6,6 +6,7 @@
 
 #include <string>
 #include <iostream>
+#include <map>
 
 using namespace std;
 
@@ -21,10 +22,14 @@ class Level
         void play();
         bool complete = false;
 
+        map<string, Room*> rooms;
+
     protected:
 
     private:
 
 };
+
+Room* create_room(Level *L, string room_name, string room_desc);
 
 #endif // LEVEL_H
