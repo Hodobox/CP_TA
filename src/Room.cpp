@@ -16,6 +16,7 @@ Room::~Room()
 
 bool Room::enter()
 {
+    if(!check_enter_requirements()) return false;
     cout << enter_desc << "\n";
     this -> list_neighbors();
     return true;
@@ -44,6 +45,7 @@ bool make_neighbors(Room *first, Room* second, int direction)
 
 bool FinishRoom::enter()
 {
+    if(!check_enter_requirements()) return false;
     cout << enter_desc << "\n";
     this -> level -> complete = true;
     return true;
