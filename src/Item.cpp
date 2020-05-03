@@ -1,8 +1,9 @@
 #include "Item.h"
 
-Item::Item()
+Item::Item(string name)
 {
     //ctor
+    this -> name = name;
 }
 
 Item::~Item()

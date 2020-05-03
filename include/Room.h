@@ -1,9 +1,12 @@
 #ifndef ROOM_H
 #define ROOM_H
 
+#include "Item.h"
+
 #include <string>
 #include <vector>
 #include <iostream>
+#include <set>
 using namespace std;
 
 class Level;
@@ -15,6 +18,7 @@ class Room
         virtual ~Room();
 
         string name;
+        set<Item> items;
 
         vector<Room*> neighbors;
         Level* level;
@@ -23,6 +27,7 @@ class Room
         virtual bool check_enter_requirements() { return true; }
         virtual bool enter();
         void list_neighbors();
+
 
     protected:
 

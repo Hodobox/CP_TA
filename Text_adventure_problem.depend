@@ -1,8 +1,9 @@
 # depslib dependency file v1.0
-1588433640 source:/home/hodobox/GIT/CP_TA/src/Item.cpp
+1588469045 source:/home/hodobox/GIT/CP_TA/src/Item.cpp
 	"Item.h"
 
-1588433639 /home/hodobox/GIT/CP_TA/include/Item.h
+1588469397 /home/hodobox/GIT/CP_TA/include/Item.h
+	<string>
 
 1588434300 source:/home/hodobox/GIT/CP_TA/src/Lexicon.cpp
 	"Lexicon.h"
@@ -12,29 +13,33 @@
 1588456740 source:/home/hodobox/GIT/CP_TA/src/Player.cpp
 	"Player.h"
 
-1588452510 /home/hodobox/GIT/CP_TA/include/Player.h
+1588469261 /home/hodobox/GIT/CP_TA/include/Player.h
 	"Room.h"
+	"Item.h"
+	<set>
 
-1588458890 source:/home/hodobox/GIT/CP_TA/src/Level.cpp
+1588468972 source:/home/hodobox/GIT/CP_TA/src/Level.cpp
 	"Level.h"
 
-1588458185 /home/hodobox/GIT/CP_TA/include/Level.h
+1588468972 /home/hodobox/GIT/CP_TA/include/Level.h
 	"Player.h"
 	"Room.h"
 	<string>
 	<iostream>
 	<map>
 
-1588459713 source:/home/hodobox/GIT/CP_TA/src/Room.cpp
+1588468972 source:/home/hodobox/GIT/CP_TA/src/Room.cpp
 	"Room.h"
 	"Level.h"
 
-1588459561 /home/hodobox/GIT/CP_TA/include/Room.h
+1588469466 /home/hodobox/GIT/CP_TA/include/Room.h
+	"Item.h"
 	<string>
 	<vector>
 	<iostream>
+	<set>
 
-1588458701 source:/home/hodobox/GIT/CP_TA/main.cpp
+1588468972 source:/home/hodobox/GIT/CP_TA/main.cpp
 	<iostream>
 	"Level.h"
 	"Room.h"
