@@ -9,6 +9,11 @@ Level::Level(string name)
 Level::~Level()
 {
     //dtor
+    delete(this->player);
+    for(auto it = this->rooms.begin(); it!=this->rooms.end();it++)
+    {
+        delete it->second;
+    }
 }
 
 void Level::play()

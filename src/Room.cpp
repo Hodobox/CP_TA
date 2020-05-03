@@ -16,7 +16,6 @@ Room::~Room()
     {
         delete(item);
     }
-    delete(this->level);
 }
 
 bool Room::enter()

@@ -9,6 +9,10 @@ Player::Player(Room* location)
 Player::~Player()
 {
     //dtor
+    for(Item* item : this->inventory)
+    {
+        delete(item);
+    }
 }
 
 void Player::enter(Room* room)
