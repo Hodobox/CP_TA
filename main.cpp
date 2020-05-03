@@ -8,11 +8,17 @@ void demo()
     cout << "setting up demo\n";
     Level L = Level("demo");
     Room* start = create_room<Room> (&L, "cell", "You wake up in a cell.");
-    RequireItemRoom* middle = create_room<RequireItemRoom>(&L, "hallway", "You enter the dimly-lit hallway.", "torch");
-    middle -> missing_item_msg = "The hallway is very dark. You stub your toe on a corner and hop back into your cell, cursing. You wish you never left it.";
-    middle -> is_permanent_unlock = false;
-    FinishRoom* finish = create_room<FinishRoom>(&L, "dungeon exit", "You arrive outside. Freedom at last!", "key");
-    finish -> missing_item_msg = "The exit is locked!";
+    Room* middle = create_room<Room>(&L, "hallway", "You enter the dimly-lit hallway.");
+    FinishRoom* finish = create_room<FinishRoom>(&L, "dungeon exit", "You arrive outside. Freedom at last!");
+
+    BaseCondition* torch_in_hallway = new PlayerHasItemCondition(&L, "torch hallway","torch");
+    middle->condition = torch_in_hallway;
+
+    BaseCondition* key_for_exit = new PlayerHasItemCondition(&L, "key dungeon exit","key",true);
+    finish->condition = key_for_exit;
+
+    //middle -> missing_item_msg = "The hallway is very dark. You stub your toe on a corner and hop back into your cell, cursing. You wish you never left it.";
+    //finish -> missing_item_msg = "The exit is locked!";
     make_neighbors(start, middle, east);
     make_neighbors(middle,finish, south);
     L.player = new Player(start);

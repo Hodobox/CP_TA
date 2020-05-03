@@ -32,19 +32,30 @@
 	<map>
 	<vector>
 
-1588544114 source:/home/hodobox/GIT/CP_TA/src/Room.cpp
+1588548982 source:/home/hodobox/GIT/CP_TA/src/Room.cpp
 	"Room.h"
 	"Level.h"
 
-1588544114 /home/hodobox/GIT/CP_TA/include/Room.h
+1588549021 /home/hodobox/GIT/CP_TA/include/Room.h
 	"Item.h"
+	"Condition.h"
 	<string>
 	<vector>
 	<iostream>
 	<set>
 
-1588544114 source:/home/hodobox/GIT/CP_TA/main.cpp
+1588549219 source:/home/hodobox/GIT/CP_TA/main.cpp
 	<iostream>
 	"Level.h"
 	"Room.h"
+
+1588545851 /home/hodobox/GIT/CP_TA/include/Condition.h
+	<string>
+	<set>
+
+1588546055 source:/home/hodobox/GIT/CP_TA/src/Condition.cpp
+	"Condition.h"
+	"Item.h"
+	"Player.h"
+	"Level.h"
 
