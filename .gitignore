@@ -30,3 +30,10 @@
 *.exe
 *.out
 *.app
+
+#Debug binary
+bin/Debug/Text_adventure_problem
+
+#valgrind output
+vgcore.*
+
