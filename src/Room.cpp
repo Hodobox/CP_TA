@@ -20,7 +20,11 @@ Room::~Room()
 
 bool Room::enter()
 {
-    if(!check_enter_requirements()) return false;
+    if(!check_enter_requirements())
+    {
+        cout << this->requirements_failed_msg << "\n";
+        return false;
+    }
     cout << enter_desc << "\n";
     this -> list_neighbors();
     cout << "\n";

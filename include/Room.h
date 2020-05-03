@@ -27,6 +27,7 @@ class Room
         string enter_desc;
         BaseCondition* condition;
         virtual bool check_enter_requirements() { if(condition==nullptr) return true; return condition->evaluate(); };
+        string requirements_failed_msg = "You cannot enter this room.";
         virtual bool enter();
         void list_neighbors();
         void list_items();

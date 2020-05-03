@@ -17,8 +17,9 @@ void demo()
     BaseCondition* key_for_exit = new PlayerHasItemCondition(&L, "key dungeon exit","key",true);
     finish->condition = key_for_exit;
 
-    //middle -> missing_item_msg = "The hallway is very dark. You stub your toe on a corner and hop back into your cell, cursing. You wish you never left it.";
-    //finish -> missing_item_msg = "The exit is locked!";
+    middle -> requirements_failed_msg = "The hallway is very dark. You stub your toe on a corner and hop back into your cell, cursing. You wish you never left it.";
+    finish -> requirements_failed_msg = "The exit is locked!";
+
     make_neighbors(start, middle, east);
     make_neighbors(middle,finish, south);
     L.player = new Player(start);
