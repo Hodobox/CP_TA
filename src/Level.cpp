@@ -37,5 +37,7 @@ void Level::play()
         if(done) continue;
         cout << response << " is not somewhere you can go right now.\n";
         player -> location -> list_neighbors();
+        cout << "\n";
+        player -> location -> list_items();
      }
 }

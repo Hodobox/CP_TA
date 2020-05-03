@@ -27,6 +27,7 @@ class Room
         virtual bool check_enter_requirements() { return true; }
         virtual bool enter();
         void list_neighbors();
+        void list_items();
 
 
     protected:

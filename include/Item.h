@@ -4,6 +4,9 @@
 #include <string>
 using namespace std;
 
+class Player;
+class Room;
+
 class Item
 {
     public:
@@ -21,5 +24,8 @@ class Item
 
     private:
 };
+
+void add_item(Player *p, Item i);
+void add_item(Room *r, Item i);
 
 #endif // ITEM_H

@@ -19,6 +19,8 @@ bool Room::enter()
     if(!check_enter_requirements()) return false;
     cout << enter_desc << "\n";
     this -> list_neighbors();
+    cout << "\n";
+    this -> list_items();
     return true;
 }
 
@@ -30,6 +32,14 @@ void Room::list_neighbors()
         if( this -> neighbors[i] == nullptr ) continue;
         cout << dir_names[i] << " to " << (this -> neighbors[i] -> name) << "\n";
     }
+}
+
+void Room::list_items()
+{
+    if(this->items.empty()) return;
+    cout << "There are some items lying around:\n";
+    for(Item i : this -> items)
+        cout << i.name << "\n";
 }
 
 bool make_neighbors(Room *first, Room* second, int direction)
