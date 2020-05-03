@@ -51,10 +51,10 @@ class RequireItemRoom: public Room
         string missing_item_msg;
 };
 
-class FinishRoom : public Room
+class FinishRoom : public RequireItemRoom
 {
     public:
-        FinishRoom(string name) : Room(name) {};
+        FinishRoom(string name,string item_name) : RequireItemRoom(name, item_name) {};
         bool enter() override;
 };
 
