@@ -3,6 +3,7 @@
 
 #include "Player.h"
 #include "Room.h"
+#include "Condition.h"
 
 #include <string>
 #include <iostream>
@@ -25,6 +26,7 @@ class Level
         bool lost = false;
 
         map<string, Room*> rooms;
+        map<string, BaseCondition*> conditions;
 
     protected:
 

@@ -11,7 +11,7 @@ class Level;
 class BaseCondition
 {
     public:
-        BaseCondition(Level* level, string name, bool permanent = false) {this->level = level; this -> name = name; this->permanent = false;};
+        BaseCondition(Level* level, string name, bool permanent = false);
         virtual ~BaseCondition();
         Level* level;
 

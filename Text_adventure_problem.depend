@@ -24,9 +24,10 @@
 1588544114 source:/home/hodobox/GIT/CP_TA/src/Level.cpp
 	"Level.h"
 
-1588544114 /home/hodobox/GIT/CP_TA/include/Level.h
+1588549969 /home/hodobox/GIT/CP_TA/include/Level.h
 	"Player.h"
 	"Room.h"
+	"Condition.h"
 	<string>
 	<iostream>
 	<map>
@@ -49,11 +50,11 @@
 	"Level.h"
 	"Room.h"
 
-1588549395 /home/hodobox/GIT/CP_TA/include/Condition.h
+1588550262 /home/hodobox/GIT/CP_TA/include/Condition.h
 	<string>
 	<set>
 
-1588546055 source:/home/hodobox/GIT/CP_TA/src/Condition.cpp
+1588550275 source:/home/hodobox/GIT/CP_TA/src/Condition.cpp
 	"Condition.h"
 	"Item.h"
 	"Player.h"

@@ -3,6 +3,14 @@
 #include "Player.h"
 #include "Level.h"
 
+BaseCondition::BaseCondition(Level *level, string name, bool permanent /* = false */ )
+{
+    this -> level = level;
+    this -> name = name;
+    this -> permanent = permanent;
+    level -> conditions[name] = this;
+}
+
 BaseCondition::~BaseCondition()
 {
     //dtor
