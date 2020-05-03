@@ -15,12 +15,12 @@ Item::~Item()
     //dtor
 }
 
-void add_item(Player *p, Item i)
+void add_item(Player *p, Item* i)
 {
     p -> inventory.insert(i);
 }
 
-void add_item(Room *r, Item i)
+void add_item(Room *r, Item* i)
 {
     r -> items.insert(i);
 }

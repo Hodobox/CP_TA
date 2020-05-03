@@ -26,6 +26,6 @@ void Player::list_inventory()
     }
 
     cout << "You have the following items in your inventory:\n";
-    for(Item i : this->inventory)
-        cout << i.name << "\n";
+    for(Item* i : this->inventory)
+        cout << i->name << "\n";
 }

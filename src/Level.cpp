@@ -60,17 +60,19 @@ void Level::play()
                 item_name += tokens[i];
             }
 
+            Item* interacted_item = new Item(item_name);
+
             if(tokens[0] == "take")
             {
                 done = true;
-                auto it = player -> location -> items.find(Item(item_name));
+                auto it = player -> location -> items.find(interacted_item);
                 if(it == player -> location -> items.end())
                 {
                     cout << "You attempt to take " << item_name << ", even though it doesn't exist. Maybe you should try something else.\n";
                 }
                 else
                 {
-                    if( (*it).on_pickup() )
+                    if( (*(*it)).on_pickup() )
                     {
                         player -> inventory.insert(*it);
                         player -> location -> items.erase(it);
@@ -81,14 +83,14 @@ void Level::play()
             else if (tokens[0] == "drop")
             {
                 done = true;
-                auto it = player -> inventory.find(Item(item_name));
+                auto it = player -> inventory.find(interacted_item);
                 if(it == player -> inventory.end())
                 {
                     cout << "You attempt to drop " << item_name << ", even though you don't have such a thing. Maybe you should try something else.\n";
                 }
                 else
                 {
-                    if( (*it).on_drop() )
+                    if( (*(*it)).on_drop() )
                     {
                         player -> location -> items.insert(*it);
                         player -> inventory.erase(it);
@@ -96,6 +98,7 @@ void Level::play()
                     }
                 }
             }
+            delete interacted_item;
         }
 
         if(done) continue;

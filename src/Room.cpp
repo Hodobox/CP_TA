@@ -12,6 +12,11 @@ Room::Room(string name)
 Room::~Room()
 {
     //dtor
+    for(Item* item : this->items)
+    {
+        delete(item);
+    }
+    delete(this->level);
 }
 
 bool Room::enter()
@@ -38,8 +43,8 @@ void Room::list_items()
 {
     if(this->items.empty()) return;
     cout << "There are some items lying around:\n";
-    for(Item i : this -> items)
-        cout << i.name << "\n";
+    for(Item* i : this -> items)
+        cout << i->name << "\n";
 }
 
 bool make_neighbors(Room *first, Room* second, int direction)
@@ -64,12 +69,15 @@ bool FinishRoom::enter()
 bool RequireItemRoom::check_enter_requirements()
 {
     if(this -> is_open) return true;
-    if(this -> level -> player -> inventory.find(Item(this->required_item)) != this -> level -> player -> inventory.end())
+    Item* req = new Item(this->required_item);
+    if(this -> level -> player -> inventory.find(req) != this -> level -> player -> inventory.end())
     {
         is_open = this -> is_permanent_unlock;
         cout << "You use " << required_item << " to gain access to " << this->name << ".\n";
+        delete req;
         return true;
     }
     else cout << this -> missing_item_msg << "\n";
+    delete req;
     return false;
 }

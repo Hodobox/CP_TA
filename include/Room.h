@@ -18,7 +18,7 @@ class Room
         virtual ~Room();
 
         string name;
-        set<Item> items;
+        set<Item*,Item::ItemPtrCmp> items;
 
         vector<Room*> neighbors;
         Level* level;
@@ -36,7 +36,7 @@ class Room
 };
 
 enum directions { north, east, south, west };
-const string dir_names[4] = { "North", "East", "South", "West" };
+const string dir_names[4] = { "north", "east", "south", "west" };
 
 bool make_neighbors(Room* first, Room* second, int direction);
 

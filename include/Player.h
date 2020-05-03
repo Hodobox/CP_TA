@@ -17,7 +17,7 @@ class Player
         Room* location;
 
         void enter(Room* room);
-        set<Item> inventory;
+        set<Item*,Item::ItemPtrCmp> inventory;
 
         void list_inventory();
 

@@ -23,6 +23,11 @@ class Item
             return this -> name < i.name;
         }
 
+        struct ItemPtrCmp
+        {
+          bool operator()(const Item* lhs, const Item* rhs) const  { return lhs->name < rhs->name; };
+        };
+
     protected:
 
     private:
@@ -37,7 +42,7 @@ class DeathOnPickupItem : public Item
         bool on_pickup() const override;
 };
 
-void add_item(Player *p, Item i);
-void add_item(Room *r, Item i);
+void add_item(Player *p, Item* i);
+void add_item(Room *r, Item* i);
 
 #endif // ITEM_H
