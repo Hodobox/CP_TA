@@ -2,6 +2,9 @@
 #define PLAYER_H
 
 #include "Room.h"
+#include "Item.h"
+
+#include <set>
 
 using namespace std;
 
@@ -14,6 +17,9 @@ class Player
         Room* location;
 
         void enter(Room* room);
+        set<Item*,Item::ItemPtrCmp> inventory;
+
+        void list_inventory();
 
     protected:
 

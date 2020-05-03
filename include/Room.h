@@ -1,9 +1,12 @@
 #ifndef ROOM_H
 #define ROOM_H
 
+#include "Item.h"
+
 #include <string>
 #include <vector>
 #include <iostream>
+#include <set>
 using namespace std;
 
 class Level;
@@ -15,6 +18,7 @@ class Room
         virtual ~Room();
 
         string name;
+        set<Item*,Item::ItemPtrCmp> items;
 
         vector<Room*> neighbors;
         Level* level;
@@ -23,6 +27,8 @@ class Room
         virtual bool check_enter_requirements() { return true; }
         virtual bool enter();
         void list_neighbors();
+        void list_items();
+
 
     protected:
 
@@ -30,14 +36,25 @@ class Room
 };
 
 enum directions { north, east, south, west };
-const string dir_names[4] = { "North", "East", "South", "West" };
+const string dir_names[4] = { "north", "east", "south", "west" };
 
 bool make_neighbors(Room* first, Room* second, int direction);
 
-class FinishRoom : public Room
+class RequireItemRoom: public Room
 {
     public:
-        FinishRoom(string name) : Room(name) {};
+        RequireItemRoom(string name, string item_name) : Room(name) {this->required_item = item_name;};
+        bool check_enter_requirements() override;
+        bool is_open = false;
+        bool is_permanent_unlock = true;
+        string required_item;
+        string missing_item_msg;
+};
+
+class FinishRoom : public RequireItemRoom
+{
+    public:
+        FinishRoom(string name,string item_name) : RequireItemRoom(name, item_name) {};
         bool enter() override;
 };
 

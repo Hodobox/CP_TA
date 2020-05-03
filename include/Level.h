@@ -7,6 +7,7 @@
 #include <string>
 #include <iostream>
 #include <map>
+#include <vector>
 
 using namespace std;
 
@@ -21,6 +22,7 @@ class Level
 
         void play();
         bool complete = false;
+        bool lost = false;
 
         map<string, Room*> rooms;
 
@@ -36,6 +38,18 @@ T* create_room(Level* L, string room_name, string room_desc)
     if(L->rooms.find(room_name) != L->rooms.end()) return nullptr;
 
     T* room = new T(room_name);
+    L->rooms[room_name] = room;
+    room -> level = L;
+    room -> enter_desc = room_desc;
+    return room;
+}
+
+template <class T>
+T* create_room(Level* L, string room_name, string room_desc,string param)
+{
+    if(L->rooms.find(room_name) != L->rooms.end()) return nullptr;
+
+    T* room = new T(room_name, param);
     L->rooms[room_name] = room;
     room -> level = L;
     room -> enter_desc = room_desc;

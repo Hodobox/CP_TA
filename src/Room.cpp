@@ -12,6 +12,10 @@ Room::Room(string name)
 Room::~Room()
 {
     //dtor
+    for(Item* item : this->items)
+    {
+        delete(item);
+    }
 }
 
 bool Room::enter()
@@ -19,6 +23,8 @@ bool Room::enter()
     if(!check_enter_requirements()) return false;
     cout << enter_desc << "\n";
     this -> list_neighbors();
+    cout << "\n";
+    this -> list_items();
     return true;
 }
 
@@ -30,6 +36,14 @@ void Room::list_neighbors()
         if( this -> neighbors[i] == nullptr ) continue;
         cout << dir_names[i] << " to " << (this -> neighbors[i] -> name) << "\n";
     }
+}
+
+void Room::list_items()
+{
+    if(this->items.empty()) return;
+    cout << "There are some items lying around:\n";
+    for(Item* i : this -> items)
+        cout << i->name << "\n";
 }
 
 bool make_neighbors(Room *first, Room* second, int direction)
@@ -49,4 +63,20 @@ bool FinishRoom::enter()
     cout << enter_desc << "\n";
     this -> level -> complete = true;
     return true;
+}
+
+bool RequireItemRoom::check_enter_requirements()
+{
+    if(this -> is_open) return true;
+    Item* req = new Item(this->required_item);
+    if(this -> level -> player -> inventory.find(req) != this -> level -> player -> inventory.end())
+    {
+        is_open = this -> is_permanent_unlock;
+        cout << "You use " << required_item << " to gain access to " << this->name << ".\n";
+        delete req;
+        return true;
+    }
+    else cout << this -> missing_item_msg << "\n";
+    delete req;
+    return false;
 }
