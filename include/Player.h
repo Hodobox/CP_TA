@@ -19,6 +19,8 @@ class Player
         void enter(Room* room);
         set<Item> inventory;
 
+        void list_inventory();
+
     protected:
 
     private:

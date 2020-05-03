@@ -13,6 +13,11 @@ void demo()
     make_neighbors(start, middle, east);
     make_neighbors(middle,finish, south);
     L.player = new Player(start);
+
+    add_item(L.player, Item("shackles"));
+    add_item(middle, Item("key"));
+    add_item(start, Item("torch"));
+
     cout << "finished demo setup\n";
 
     L.play();
