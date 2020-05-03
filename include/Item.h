@@ -6,12 +6,15 @@ using namespace std;
 
 class Player;
 class Room;
+class Level;
 
 class Item
 {
     public:
         Item(string name);
         virtual ~Item();
+        virtual bool on_pickup() const {return true;}; // return value is 'continue with default behaviour in game loop?'
+        virtual bool on_drop() const {return true;};
 
         string name;
 
@@ -23,6 +26,15 @@ class Item
     protected:
 
     private:
+};
+
+class DeathOnPickupItem : public Item
+{
+    public:
+        DeathOnPickupItem(string name, string death_msg, Level *level) : Item(name) {this->death_msg = death_msg; this->level = level;};
+        string death_msg;
+        Level *level;
+        bool on_pickup() const override;
 };
 
 void add_item(Player *p, Item i);

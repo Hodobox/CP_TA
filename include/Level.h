@@ -22,6 +22,7 @@ class Level
 
         void play();
         bool complete = false;
+        bool lost = false;
 
         map<string, Room*> rooms;
 

@@ -17,7 +17,7 @@ void Level::play()
     player -> enter(player -> location);
     cout << "\n";
     player -> list_inventory();
-    while(!(this->complete))
+    while(!(this->complete) && !(this->lost))
     {
         string response;
         getline(cin, response);
@@ -70,9 +70,12 @@ void Level::play()
                 }
                 else
                 {
-                    player -> inventory.insert(*it);
-                    player -> location -> items.erase(it);
-                    cout << "You take the " << item_name << ".\n";
+                    if( (*it).on_pickup() )
+                    {
+                        player -> inventory.insert(*it);
+                        player -> location -> items.erase(it);
+                        cout << "You take the " << item_name << ".\n";
+                    }
                 }
             }
             else if (tokens[0] == "drop")
@@ -85,9 +88,12 @@ void Level::play()
                 }
                 else
                 {
-                    player -> location -> items.insert(*it);
-                    player -> inventory.erase(it);
-                    cout << "You drop the " << item_name << ".\n";
+                    if( (*it).on_drop() )
+                    {
+                        player -> location -> items.insert(*it);
+                        player -> inventory.erase(it);
+                        cout << "You drop the " << item_name << ".\n";
+                    }
                 }
             }
         }
