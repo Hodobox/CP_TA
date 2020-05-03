@@ -20,7 +20,7 @@ void demo()
     add_item(L.player, new Item("broken shackles"));
     add_item(middle, new Item("key"));
     add_item(start, new Item("torch"));
-    add_item(middle, new DeathOnPickupItem("rat poison","You take the rat poison. Surprisingly, even though you are most definitely not a rat, it poisons you. You die.", &L));
+    add_item(middle, new DeathOnPickupItem("rat poison","Not quite sure why yourself, you take the rat poison. Surprisingly, even though you are most definitely not a rat, it poisons you. You die.", &L));
 
     cout << "finished demo setup\n";
 
