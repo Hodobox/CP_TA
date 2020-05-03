@@ -60,3 +60,16 @@ bool FinishRoom::enter()
     this -> level -> complete = true;
     return true;
 }
+
+bool RequireItemRoom::check_enter_requirements()
+{
+    if(this -> is_open) return true;
+    if(this -> level -> player -> inventory.find(Item(this->required_item)) != this -> level -> player -> inventory.end())
+    {
+        is_open = this -> is_permanent_unlock;
+        cout << "You use " << required_item << " to gain access to " << this->name << ".\n";
+        return true;
+    }
+    else cout << this -> missing_item_msg << "\n";
+    return false;
+}

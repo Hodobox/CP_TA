@@ -40,6 +40,17 @@ const string dir_names[4] = { "North", "East", "South", "West" };
 
 bool make_neighbors(Room* first, Room* second, int direction);
 
+class RequireItemRoom: public Room
+{
+    public:
+        RequireItemRoom(string name, string item_name) : Room(name) {this->required_item = item_name;};
+        bool check_enter_requirements() override;
+        bool is_open = false;
+        bool is_permanent_unlock = true;
+        string required_item;
+        string missing_item_msg;
+};
+
 class FinishRoom : public Room
 {
     public:
