@@ -7,8 +7,8 @@ void demo()
 {
     cout << "setting up demo\n";
     Level L = Level("demo");
-    Room* start = create_room(&L, "start", "You wake up in a cell.");
-    Room* finish = create_room(&L, "finish", "You arrive outside. Freedom at last!");
+    Room* start = create_room<Room> (&L, "start", "You wake up in a cell.");
+    Room* finish = create_room<FinishRoom>(&L, "finish", "You arrive outside. Freedom at last!");
     make_neighbors(start, finish, east);
     L.player = new Player(start);
     cout << "finished demo setup\n";
