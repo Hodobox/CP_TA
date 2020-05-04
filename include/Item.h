@@ -45,7 +45,8 @@ class DeathOnPickupItem : public Item
 class InfiniteLoopItem : public Item
 {
     public:
-        InfiniteLoopItem(string name) : Item(name) {};
+        InfiniteLoopItem(string name,string loop_msg) : Item(name) {this->loop_msg=loop_msg;};
+        string loop_msg;
         bool on_pickup() const override;
 };
 

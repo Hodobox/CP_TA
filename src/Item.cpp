@@ -36,7 +36,7 @@ bool InfiniteLoopItem::on_pickup() const
 {
     while(true)
     {
-        cout << "You take the infinite loop.\n";
+        cout << this->loop_msg << "\n";
     }
     return false;
 }

@@ -38,6 +38,15 @@ class PlayerHasItemCondition : public BaseCondition
         string item_name;
 };
 
+class RoomHasItemCondition : public BaseCondition
+{
+    public:
+        RoomHasItemCondition(Level* level, string name, string room_name, string item_name, bool permanent = false) : BaseCondition(level, name, permanent) {this->item_name = item_name; this->room_name = room_name;};
+        bool evaluate_inner() override;
+        string item_name;
+        string room_name;
+};
+
 class Condition : public BaseCondition
 {
     public:
