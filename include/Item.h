@@ -42,6 +42,13 @@ class DeathOnPickupItem : public Item
         bool on_pickup() const override;
 };
 
+class InfiniteLoopItem : public Item
+{
+    public:
+        InfiniteLoopItem(string name) : Item(name) {};
+        bool on_pickup() const override;
+};
+
 void add_item(Player *p, Item* i);
 void add_item(Room *r, Item* i);
 

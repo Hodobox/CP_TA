@@ -14,6 +14,10 @@ Level::~Level()
     {
         delete it->second;
     }
+    for(auto it = this->conditions.begin(); it!=this->conditions.end();it++)
+    {
+        delete it->second;
+    }
 }
 
 void Level::play()

@@ -2,6 +2,7 @@
 #define ROOM_H
 
 #include "Item.h"
+#include "Condition.h"
 
 #include <string>
 #include <vector>
@@ -24,11 +25,12 @@ class Room
         Level* level;
 
         string enter_desc;
-        virtual bool check_enter_requirements() { return true; }
+        BaseCondition* condition;
+        virtual bool check_enter_requirements() { if(condition==nullptr) return true; return condition->evaluate(); };
+        string requirements_failed_msg = "You cannot enter this room.";
         virtual bool enter();
         void list_neighbors();
         void list_items();
-
 
     protected:
 
@@ -40,21 +42,10 @@ const string dir_names[4] = { "north", "east", "south", "west" };
 
 bool make_neighbors(Room* first, Room* second, int direction);
 
-class RequireItemRoom: public Room
+class FinishRoom : public Room
 {
     public:
-        RequireItemRoom(string name, string item_name) : Room(name) {this->required_item = item_name;};
-        bool check_enter_requirements() override;
-        bool is_open = false;
-        bool is_permanent_unlock = true;
-        string required_item;
-        string missing_item_msg;
-};
-
-class FinishRoom : public RequireItemRoom
-{
-    public:
-        FinishRoom(string name,string item_name) : RequireItemRoom(name, item_name) {};
+        FinishRoom(string name) : Room(name) {};
         bool enter() override;
 };
 
