@@ -22,7 +22,13 @@ Level::~Level()
 
 void Level::play()
 {
-    cout << "Welcome to level: " << name << "\n";
+    cout << "-------\n";
+    cout << "Welcome to level: " << name << ".\n";
+    cout << "Type a direction to move to an adjacent room.\n";
+    cout << "Type take [item] to take an [item] in the room.\n";
+    cout << "Type drop [item] to drop an [item] from your inventory.\n";
+    cout << "Type quit to quit.\n";
+    cout << "-------\n\n";
     player -> enter(player -> location);
     cout << "\n";
     player -> list_inventory();
