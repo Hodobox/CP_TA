@@ -32,6 +32,14 @@ bool PlayerHasItemCondition::evaluate_inner()
     return sat;
 }
 
+bool RoomHasItemCondition::evaluate_inner()
+{
+    Item* it = new Item(this->item_name);
+    bool sat = (this->level->rooms[this->room_name]->items.find(it)) != (this->level->rooms[this->room_name]->items.end());
+    delete it;
+    return sat;
+}
+
 bool Condition::evaluate_inner()
 {
     bool sat = true;
