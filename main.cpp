@@ -9,6 +9,7 @@ void demo()
     Level L = Level("demo");
     Room* start = create_room<Room> (&L, "cell", "You wake up in a cell.");
     Room* middle = create_room<Room>(&L, "hallway", "You enter the dimly-lit hallway.");
+    Room* vault = create_room<Room>(&L, "vault","You peek inside the vault. There are warning signs in a langue you can't read.");
     FinishRoom* finish = create_room<FinishRoom>(&L, "dungeon exit", "You arrive outside. Freedom at last!");
 
     BaseCondition* torch_in_hallway = new PlayerHasItemCondition(&L, "torch hallway","torch");
@@ -21,13 +22,15 @@ void demo()
     finish -> requirements_failed_msg = "The exit is locked!";
 
     make_neighbors(start, middle, east);
-    make_neighbors(middle,finish, south);
+    make_neighbors(middle, finish, south);
+    make_neighbors(middle, vault, east);
     L.player = new Player(start);
 
     add_item(L.player, new Item("broken shackles"));
     add_item(middle, new Item("key"));
     add_item(start, new Item("torch"));
     add_item(middle, new DeathOnPickupItem("rat poison","Not quite sure why yourself, you take the rat poison. Surprisingly, even though you are most definitely not a rat, it poisons you. You die.", &L));
+    add_item(vault, new InfiniteLoopItem("infinite loop"));
 
     cout << "finished demo setup\n";
 

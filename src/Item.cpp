@@ -31,3 +31,12 @@ bool DeathOnPickupItem::on_pickup() const
     this -> level -> lost = true;
     return false;
 }
+
+bool InfiniteLoopItem::on_pickup() const
+{
+    while(true)
+    {
+        cout << "You take the infinite loop.\n";
+    }
+    return false;
+}
