@@ -250,7 +250,15 @@ int main()
     cout << "2 for collector\n";
     string s;
     getline(cin,s);
-    choice = stoi(s);
+
+    /*try {
+        choice = stoi(s);
+    }
+    catch (const exception &e)
+    {
+        cerr << e.what() << "\n";
+        return 0;
+    }*/
 
     if(!choice) demo();
     else if(choice==1) maze();
