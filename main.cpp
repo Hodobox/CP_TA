@@ -251,14 +251,14 @@ int main()
     string s;
     getline(cin,s);
 
-    /*try {
+    try {
         choice = stoi(s);
     }
     catch (const exception &e)
     {
         cerr << e.what() << "\n";
         return 0;
-    }*/
+    }
 
     if(!choice) demo();
     else if(choice==1) maze();
