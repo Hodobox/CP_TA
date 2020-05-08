@@ -20,7 +20,7 @@ bool BaseCondition::evaluate()
 {
     if(this->satisfied) return true;
     bool sat = this->evaluate_inner();
-    if(permanent) this->satisfied = true;
+    if(this->permanent) this->satisfied |= sat;
     return sat;
 }
 
@@ -47,3 +47,4 @@ bool Condition::evaluate_inner()
         sat &= cond->evaluate();
     return sat;
 }
+

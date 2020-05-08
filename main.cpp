@@ -241,6 +241,30 @@ void collector()
     else cout << "WA\n";
 }
 
+void pindoor()
+{
+    Level L = Level("pin");
+
+    create_room<Room>(&L, "warehouse","You wake up in a locked warehouse.");
+    create_room<FinishRoom>(&L,"exit","You leave the mysterious warehouse.");
+    make_neighbors(L.rooms["warehouse"],L.rooms["exit"],north);
+
+    PasswordCondition<string>* cond = new PasswordCondition<string>(&L, "exit password","0769",true,"Please enter the 4-digit pincode:");
+    L.rooms["exit"]->condition = cond;
+
+    L.player = new Player(L.rooms["warehouse"]);
+    L.play();
+
+    if(L.complete) cout << "OK\n";
+    else cout << "WA\n";
+}
+
+void guessnum()
+{
+
+
+}
+
 int main()
 {
     int choice;
@@ -249,6 +273,8 @@ int main()
     cout << "0 for demo\n";
     cout << "1 for maze\n";
     cout << "2 for collector\n";
+    cout << "3 for pin\n";
+    cout << "4 for pin-hard\n";
     string s;
     cout << ">" << endl;
     getline(cin,s);
@@ -264,7 +290,9 @@ int main()
 
     if(!choice) demo();
     else if(choice==1) maze();
-    else collector();
+    else if(choice==2) collector();
+    else if (choice==3) pindoor();
+    else if (choice==4) guessnum();
 
     return 0;
 }
