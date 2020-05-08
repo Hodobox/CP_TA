@@ -37,3 +37,8 @@ bin/Debug/Text_adventure_problem
 #valgrind output
 vgcore.*
 
+#logs
+logs/*
+
+#solver binaries
+bin_solvers/*

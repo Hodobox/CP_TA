@@ -1,0 +1,1 @@
+please compile into ../bin_solvers/, cheers

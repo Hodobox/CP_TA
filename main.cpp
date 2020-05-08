@@ -244,13 +244,23 @@ void collector()
 int main()
 {
     int choice;
+    cout << "Every time user input is expected, '>' appears in a single line.\n";
     cout << "Type:\n";
     cout << "0 for demo\n";
     cout << "1 for maze\n";
     cout << "2 for collector\n";
     string s;
+    cout << ">" << endl;
     getline(cin,s);
-    choice = stoi(s);
+
+    try {
+        choice = stoi(s);
+    }
+    catch (const exception &e)
+    {
+        cerr << "exception caught on " << e.what() << "\n";
+        return 0;
+    }
 
     if(!choice) demo();
     else if(choice==1) maze();
