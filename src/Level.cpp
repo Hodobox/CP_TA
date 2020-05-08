@@ -35,6 +35,7 @@ void Level::play()
     while(!(this->complete) && !(this->lost))
     {
         string response;
+        cout << ">" << endl;
         getline(cin, response);
 
         if(response == "quit") break;
