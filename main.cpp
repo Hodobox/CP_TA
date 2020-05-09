@@ -241,14 +241,55 @@ void collector()
     else cout << "WA\n";
 }
 
+void pindoor()
+{
+    Level L = Level("pin");
+
+    create_room<Room>(&L, "warehouse","You wake up in a locked warehouse.");
+    create_room<FinishRoom>(&L,"exit","You leave the mysterious warehouse.");
+    make_neighbors(L.rooms["warehouse"],L.rooms["exit"],north);
+
+    Question<string,string>* pin_question = new Question<string,string>("Please enter the 4-digit pincode:","0769");
+    QuestionCondition* pin_condition = new QuestionCondition(&L, "pin condition", pin_question);
+    L.rooms["exit"]->condition = pin_condition;
+
+    L.player = new Player(L.rooms["warehouse"]);
+    L.play();
+
+    if(L.complete) cout << "OK\n";
+    else cout << "WA\n";
+}
+
+void guessnum()
+{
+    Level L = Level("pin-hard");
+
+    create_room<Room>(&L,"warehouse","You wake up in a locked warehouse.");
+    create_room<FinishRoom>(&L,"exit","You leave the mysterious warehouse.");
+    make_neighbors(L.rooms["warehouse"],L.rooms["exit"],north);
+
+    GuessNumberQuestion* question = new GuessNumberQuestion("As you try to exit the warehouse, a very wide man blocks the exit, and asks: what number am I thinking of? You think it would be rude not to answer.",474769420123456LL);
+    QuestionCondition* guess_condition = new QuestionCondition(&L, "guess condition", question);
+    L.rooms["exit"]->condition = guess_condition;
+
+    L.player = new Player(L.rooms["warehouse"]);
+    L.play();
+
+    if(L.complete) cout << "OK\n";
+    else cout << "WA\n";
+
+}
+
 int main()
 {
     int choice;
     cout << "Every time user input is expected, '>' appears in a single line.\n";
     cout << "Type:\n";
-    cout << "0 for demo\n";
-    cout << "1 for maze\n";
-    cout << "2 for collector\n";
+    cout << "0 for demo (hand)\n";
+    cout << "1 for maze (hard)\n";
+    cout << "2 for collector (medium)\n";
+    cout << "3 for pin (easy)\n";
+    cout << "4 for pin-hard (easy)\n";
     string s;
     cout << ">" << endl;
     getline(cin,s);
@@ -264,7 +305,9 @@ int main()
 
     if(!choice) demo();
     else if(choice==1) maze();
-    else collector();
+    else if(choice==2) collector();
+    else if (choice==3) pindoor();
+    else if (choice==4) guessnum();
 
     return 0;
 }

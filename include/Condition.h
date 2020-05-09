@@ -1,8 +1,11 @@
 #ifndef CONDITION_H
 #define CONDITION_H
 
-#include<string>
-#include<set>
+#include "Question.h"
+
+#include <string>
+#include <set>
+#include <iostream>
 
 using namespace std;
 
@@ -46,6 +49,16 @@ class RoomHasItemCondition : public BaseCondition
         string item_name;
         string room_name;
 };
+
+class QuestionCondition : public BaseCondition
+{
+    public:
+        QuestionCondition(Level *level, string name, BaseQuestion* question, bool permanent = false) : BaseCondition(level, name, permanent) {this->question = question;};
+        ~QuestionCondition();
+        BaseQuestion* question;
+        bool evaluate_inner() override;
+};
+
 
 class Condition : public BaseCondition
 {
