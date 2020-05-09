@@ -45,7 +45,7 @@
 	<iostream>
 	<set>
 
-1588975648 source:/home/hodobox/GIT/CP_TA/main.cpp
+1588985637 source:/home/hodobox/GIT/CP_TA/main.cpp
 	<iostream>
 	<queue>
 	<vector>
@@ -53,14 +53,22 @@
 	"Level.h"
 	"Room.h"
 
-1588975699 /home/hodobox/GIT/CP_TA/include/Condition.h
+1588985440 /home/hodobox/GIT/CP_TA/include/Condition.h
+	"Question.h"
 	<string>
 	<set>
 	<iostream>
 
-1588975528 source:/home/hodobox/GIT/CP_TA/src/Condition.cpp
+1588985362 source:/home/hodobox/GIT/CP_TA/src/Condition.cpp
 	"Condition.h"
 	"Item.h"
 	"Player.h"
 	"Level.h"
+
+1588985953 /home/hodobox/GIT/CP_TA/include/Question.h
+	<string>
+	<iostream>
+
+1588985940 source:/home/hodobox/GIT/CP_TA/src/Question.cpp
+	"Question.h"
 

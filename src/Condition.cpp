@@ -48,3 +48,13 @@ bool Condition::evaluate_inner()
     return sat;
 }
 
+bool QuestionCondition::evaluate_inner()
+{
+    return this->question->ask();
+}
+
+QuestionCondition::~QuestionCondition()
+{
+    if(this->question != nullptr)   delete(this->question);
+}
+

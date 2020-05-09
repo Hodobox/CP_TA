@@ -249,8 +249,9 @@ void pindoor()
     create_room<FinishRoom>(&L,"exit","You leave the mysterious warehouse.");
     make_neighbors(L.rooms["warehouse"],L.rooms["exit"],north);
 
-    PasswordCondition<string>* cond = new PasswordCondition<string>(&L, "exit password","0769",true,"Please enter the 4-digit pincode:");
-    L.rooms["exit"]->condition = cond;
+    Question<string,string>* pin_question = new Question<string,string>("Please enter the 4-digit pincode:","0769");
+    QuestionCondition* pin_condition = new QuestionCondition(&L, "pin condition", pin_question);
+    L.rooms["exit"]->condition = pin_condition;
 
     L.player = new Player(L.rooms["warehouse"]);
     L.play();
@@ -261,6 +262,13 @@ void pindoor()
 
 void guessnum()
 {
+    Level L = Level("pin-hard");
+
+    create_room<Room>(&L,"warehouse","You wake up in a locked warehouse.");
+    create_room<FinishRoom>(&L,"exit","You leave the mysterious warehouse.");
+    make_neighbors(L.rooms["warehouse"],L.rooms["exit"],north);
+
+    //QuestionCondition<long long>* cond = new QuestionCondition<long long>(&L,"thought number",474769420123456LL,true,"Guess my number")
 
 
 }
@@ -270,11 +278,11 @@ int main()
     int choice;
     cout << "Every time user input is expected, '>' appears in a single line.\n";
     cout << "Type:\n";
-    cout << "0 for demo\n";
-    cout << "1 for maze\n";
-    cout << "2 for collector\n";
-    cout << "3 for pin\n";
-    cout << "4 for pin-hard\n";
+    cout << "0 for demo (hand)\n";
+    cout << "1 for maze (hard)\n";
+    cout << "2 for collector (medium)\n";
+    cout << "3 for pin (easy)\n";
+    cout << "4 for pin-hard (easy)\n";
     string s;
     cout << ">" << endl;
     getline(cin,s);
