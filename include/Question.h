@@ -73,5 +73,12 @@ bool Question<QUE,ANS>::eval_ans(ANS ans)
     return res;
 }
 
+class GuessNumberQuestion : public Question<string,long long>
+{
+    public:
+        GuessNumberQuestion(string question,long long answer) : Question(question,answer) {};
+        bool eval_ans(long long ans) override;
+};
+
 
 #endif // QUESTION_H

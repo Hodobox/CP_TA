@@ -268,8 +268,15 @@ void guessnum()
     create_room<FinishRoom>(&L,"exit","You leave the mysterious warehouse.");
     make_neighbors(L.rooms["warehouse"],L.rooms["exit"],north);
 
-    //QuestionCondition<long long>* cond = new QuestionCondition<long long>(&L,"thought number",474769420123456LL,true,"Guess my number")
+    GuessNumberQuestion* question = new GuessNumberQuestion("As you try to exit the warehouse, a very wide man blocks the exit, and asks: what number am I thinking of? You think it would be rude not to answer.",474769420123456LL);
+    QuestionCondition* guess_condition = new QuestionCondition(&L, "guess condition", question);
+    L.rooms["exit"]->condition = guess_condition;
 
+    L.player = new Player(L.rooms["warehouse"]);
+    L.play();
+
+    if(L.complete) cout << "OK\n";
+    else cout << "WA\n";
 
 }
 
